@@ -10,9 +10,9 @@ Problems solved in spring-rest
 	Add "jackson-dataformat-xml" dependency for conversion of JSON to XML (Version: 2.4.3) <br />
 	At Server Side: <br />
 		Annotate a RestController class with @Provider annotation  <br />
-		Specify consumer as method level :  <br />
+		Specify consumer at method level as:  <br />
 			@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})  <br />
-		Specify producer as method level : <br />
+		Specify producer at method level as: <br />
 			@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})  <br />
 			
 	At the client side: <br />
