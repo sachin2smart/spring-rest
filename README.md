@@ -1,22 +1,22 @@
 # spring-rest
 Problems solved in spring-rest
 
-1. Can we have a single endpoint serving both GET & POST methods
--->	Yes, we can have that.
-	Annottate both methods with @GetMapping() & @PostMapping with same path-url names at both the places 
+1. Can we have a single endpoint serving both GET & POST methods <br />
+-->	Yes, we can have that. <br />
+	Annottate both methods with @GetMapping() & @PostMapping with same path-url names at both the places <br />
 	
-2. Creation of a single endpoint to server both XML & JSON requests
--->	Yes, it is possible 
-	Add "jackson-dataformat-xml" dependency for conversion of JSON to XML (Version: 2.4.3)
-	At Server Side:
-		Annotate a RestController class with @Provider annotation 
-		Specify consumer as method level :
-			@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-		Specify producer as method level :
-			@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+2. Creation of a single endpoint to server both XML & JSON requests<br />
+-->	Yes, it is possible <br />
+	Add "jackson-dataformat-xml" dependency for conversion of JSON to XML (Version: 2.4.3) <br />
+	At Server Side: <br />
+		Annotate a RestController class with @Provider annotation  <br />
+		Specify consumer as method level :  <br />
+			@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})  <br />
+		Specify producer as method level : <br />
+			@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})  <br />
 			
-	At the client side:
-		Keep the request body input in JSON or XML format as required. 
-		Add the "Accept" header with value as "application/xml" or "application/json" as per the requirement 
+	At the client side: <br />
+		Keep the request body input in JSON or XML format as required.  <br />
+		Add the "Accept" header with value as "application/xml" or "application/json" as per the requirement  <br />
 		
-	We can send an XML and can retrieve the JSON if required
+	We can send an XML and can retrieve the JSON if required  <br />
