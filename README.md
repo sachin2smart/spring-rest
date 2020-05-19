@@ -22,4 +22,4 @@ Problems solved in spring-rest
 	We can send an XML and can retrieve the JSON if required  <br />
 	
 	Code Sample: <br/> 
-	 </t>></t>  https://github.com/sachin2smart/spring-rest/blob/master/springrestdemo/src/main/java/in/sachinshinde/springrestdemo/controller/MessageController.java 
+	 </t>--></t>  https://github.com/sachin2smart/spring-rest/blob/master/springrestdemo/src/main/java/in/sachinshinde/springrestdemo/controller/MessageController.java 
