@@ -5,7 +5,20 @@ public class Movie {
 	String name;
 	String genres;
 	int budget;
-	float imdbRating;
+	double imdbRating;
+
+	public Movie() {
+		super();
+	}
+
+	public Movie(int id, String name, String genres, int budget, double imdbRating) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.genres = genres;
+		this.budget = budget;
+		this.imdbRating = imdbRating;
+	}
 
 	public int getId() {
 		return id;
@@ -39,12 +52,12 @@ public class Movie {
 		this.budget = budget;
 	}
 
-	public float getImdbRating() {
+	public double getImdbRating() {
 		return imdbRating;
 	}
 
-	public void setImdbRating(float imdbRating) {
-		this.imdbRating = imdbRating;
+	public void setImdbRating(double d) {
+		this.imdbRating = d;
 	}
 
 	@Override

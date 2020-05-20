@@ -36,10 +36,10 @@ import in.sachinshinde.springrestdemo.model.Message;
  */
 @RestController
 @Provider
-public class MessageController{
+public class MessageController {
 	
 	@GetMapping("/message")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	Message getMessage() {
 	    return new Message("first message");
 	}
