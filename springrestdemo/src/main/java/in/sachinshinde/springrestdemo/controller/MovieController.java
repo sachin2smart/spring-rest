@@ -3,6 +3,8 @@ package in.sachinshinde.springrestdemo.controller;
 import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import in.sachinshinde.springrestdemo.model.Movie;
@@ -32,4 +34,22 @@ public class MovieController {
 		
 		return movies;
 	}
+	
+	ArrayList<Movie> movies = new ArrayList<Movie>();
+	
+	@PostMapping("/addMovie")
+	public ArrayList<Movie> AddMovie(@RequestBody ArrayList<Movie> m) {
+		try{
+			movies = m;
+		}catch(Exception e) {
+			System.out.println("Exception Occured : "+ e);
+		}
+		return movies;
+	}
+	
+	@GetMapping("/getMovie")
+	public ArrayList<Movie> getMoviesAdded() {
+		return movies;
+	}
+	
 }
