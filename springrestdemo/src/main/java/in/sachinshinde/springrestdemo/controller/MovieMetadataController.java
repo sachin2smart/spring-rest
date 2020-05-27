@@ -97,35 +97,10 @@ public class MovieMetadataController {
 //								)
 //							.collect(Collectors.toList());
 			
-//			Stream.concat(Ids.stream(),original_titles.stream()).forEach(System.out::println);
-//			production_companies.forEach(System.out::println);
-			production_companies = production_companies
-											.stream()
-											.map(
-													s->
-														{
-															s = s.toString().replace('\'', '"');
-															try {
-															JSONParser parser = new JSONParser();
-															Optional<JSONObject> jObj = (Optional<JSONObject>) parser.parse(s);
-//															
-																if(jObj.isPresent()) {
-																	System.out.println(jObj);
-																}else {
-																	System.out.println("Not Present.");
-																}
-//																Optional.ofNullable(s.getJSONObject())
-															}catch(Exception e) {
-																System.out.println("Exception :"+ e);
-															}
-															
-															return s;
-														}
-												)
-											.collect(Collectors.toList());
-			csvParser.close();
+			Stream.concat(Ids.stream(),original_titles.stream()).forEach(System.out::println);
+
 			
-			// Get the maximum runtime among the movies 
+			// ***** Get the maximum runtime among the movies 
 			Optional<Double> max_runtimes = runtimes
 												.stream()
 												.map(
@@ -140,8 +115,19 @@ public class MovieMetadataController {
 												.max(Comparator.naturalOrder());
 			
 			System.out.println("Min Runtime: "+max_runtimes.get());
+			
+			
+			// **** Get the number of movies produced by "Pixar" production company 
+			long pc = production_companies
+						.stream()
+						.filter(it -> it.contains("Pixar"))
+						.count();
 			 
-			 return production_companies;
+			System.out.println("Number of Movies with Pixar production are  : "+ pc);
+			
+			
+			csvParser.close();
+			return production_companies;
 			 
 		}catch(FileNotFoundException e) {
 			System.out.println("File not found Exception: "+ e);
