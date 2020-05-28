@@ -2,13 +2,18 @@ package in.sachinshinde.springrestdemo.controller;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.StringBufferInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.IdentityScope;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.apache.commons.csv.CSVFormat;
@@ -97,8 +102,34 @@ public class MovieMetadataController {
 //								)
 //							.collect(Collectors.toList());
 			
-			Stream.concat(Ids.stream(),original_titles.stream()).forEach(System.out::println);
+//			Stream.concat(Ids.stream(),original_titles.stream()).forEach(System.out::println);
 
+			Iterator<Integer> idsIterator = Ids.iterator();
+			Iterator<String> titlesIterator = original_titles.iterator();
+			
+//			Map<Object, Object> moviesByTitleAndId = IntStream.range(0, Ids.size())
+//							.boxed()
+//							.collect(
+//										Collectors.toMap(
+//															i -> idsIterator.next(),
+//															j -> titlesIterator.next()
+//														)
+//									);
+			
+			Map<Object, List<Object>> moviesByTitleAndId2 = Ids
+														.stream()
+														.distinct()
+														.collect(
+																Collectors.groupingBy(
+																		i -> titlesIterator.next(),
+																		Collectors.mapping(
+																				j-> idsIterator.next(), 
+																				Collectors.toList())
+																)
+														);
+					
+			System.out.println("Title :" + moviesByTitleAndId2);
+			
 			
 			// ***** Get the maximum runtime among the movies 
 			Optional<Double> max_runtimes = runtimes
